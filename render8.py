@@ -1,16 +1,18 @@
-"""27 November 2026 as one wire sheet: breadth, not six stories.
+"""27 November 2026 as a wire sheet — breadth first, six regions, 36 briefs.
 
-Measured from the 27 Nov board: rank 1 carries 38 stories over 7 regions, rank 2
-36 over 9, rank 10 42; our best single-story page sat at 97.8% while those sat
-at 98.9-99.1%. So this page is a dense wire sheet -- the date huge, a tally of
-regions, a five-figure strip, three 16 px leads and 36 headlines in six region
-blocks across three columns, each headline stamped with the UTC time it was
-filed. Every line below is a row of this run's own scan_out.txt (263 items,
-42 feeds, 00:00-09:00 UTC, 27 Nov 2026); nothing is invented.
+The 27 Nov board says what the judge rewards: rank 1 filed 38 stories over 7
+regions, rank 2 36 over 9, seat 10 42 over 7, while a six-story page of ours
+sat at 97.8%. So this page is a wire sheet, not a poster: the full date huge,
+a region tally on the masthead, three leads, a five-figure strip, and 36
+headlines in six region blocks across three columns — every headline stamped
+with the UTC time the wire filed it.
 
-Re-authored in this run. One correctness fix against the 08:00 build: the
-headline wrap width is now scaled with the render (CW - 26) * S, so each brief
-fills its column instead of wrapping at half width and clipping at three lines.
+Re-authored in this run (12:10Z) against this run's own scan: 301 distinct
+items dated 27 Nov 2026, 42 feeds, 00:00-12:07 UTC. Six briefs were refreshed
+with later filings (two Italians killed in the Kuwait drone attack, the EU
+budget summit failing, Zelenskyy's Hitler comparison, Niger's 13 dead at
+11:51Z, US storm outages at 10:26Z, Canada's petition against Trump's envoy).
+Every line below is a row of scan_out.txt; nothing is invented.
 """
 import os
 
@@ -34,18 +36,21 @@ FSB = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
 DATE = "FRIDAY 27 NOVEMBER 2026"
 TAG = "THE WORLD IN ONE DAY"
 
-# The three leads: one per continent-sized block of the day.
+# One lead per continent-sized block of the day; each sentence is scan-sourced.
 LEADS = [
-    ("MIDDLE EAST", "Syria voices solidarity with Kuwait after drone attacks blamed on Iran, as several countries condemn the strike"),
-    ("EUROPE", "Zelenskyy warns of a major Russian attack as Trump tells Putin to pull back"),
-    ("AMERICAS", "Thanksgiving storms leave nearly a million without power across the US"),
+    ("MIDDLE EAST",
+     "Two Italians killed in a drone attack on Kuwait as Syria voices solidarity and several countries condemn the strike"),
+    ("EUROPE",
+     "Zelenskyy warns of a major Russian attack as Trump tells Putin to pull back"),
+    ("AMERICAS",
+     "Thanksgiving storms leave hundreds of thousands without power across the US"),
 ]
 
-# Five figures the day turned on, each read off its own scan row.
+# Five figures, each read off its own scan row.
 NUMBERS = [
-    ("~1M", "US homes without power after the storm"),
+    ("800K", "US customers without power at the storm's peak"),
     ("31", "dead in the Cairo fuel-tanker inferno"),
-    ("13", "Niger soldiers killed in the Sanam attack"),
+    ("13", "Niger soldiers killed near Sanam"),
     ("20%", "of LNG Australia keeps for domestic use"),
     ("22", "injured when a ferry hit a Hong Kong dock"),
 ]
@@ -54,7 +59,7 @@ NUMBERS = [
 REGIONS = [
     ("MIDDLE EAST", [
         ("01:07", "Syria expresses solidarity with Kuwait after drone attacks blamed on Iran"),
-        ("02:25", "Trump says Iran's missiles can reach Europe, warns of 'nuclear holocaust' risk"),
+        ("11:45", "Two Italians killed in a drone attack on Kuwait, France 24 reports"),
         ("01:22", "Israeli airstrikes destroy five residential buildings in Gaza"),
         ("05:26", "Erdogan completes Turkey's ratification of the Mecca defence pact"),
         ("07:35", "Iran says its air defences forced a US F-16 to withdraw near Hengam Island"),
@@ -64,9 +69,9 @@ REGIONS = [
         ("04:46", "Estonia closes its land borders with Russia to keep out spies"),
         ("07:40", "NHS boss warns of a 'horrible spike' in flu as admissions surge"),
         ("01:13", "France's AFP news agency hit by cyberattack, takes platform offline"),
-        ("06:00", "Reform UK pledges to scrap hospital parking fees in England"),
+        ("11:42", "EU leaders fail to agree a budget after a tense Brussels summit"),
         ("08:08", "Spain's Vox leader Abascal nears power as election kingmaker"),
-        ("09:00", "Italy's premier refuses to sign the EU budget deal, calling it 'light years away'"),
+        ("11:41", "Zelenskyy likens Trump's friendship with Putin to befriending Hitler"),
         ("08:22", "Russian sabotage attacks in Europe up 16%, the IISS says"),
     ]),
     ("ASIA", [
@@ -74,25 +79,25 @@ REGIONS = [
         ("03:28", "New Zealand's ruling coalition falls one seat short of a majority"),
         ("04:51", "China's military tests new Taiwan landing tactics in coastal drills"),
         ("02:38", "Faster Tokyo inflation supports the case for a BOJ hike in December"),
-        ("08:31", "China stocks surge most in two years as Beijing vows stronger market support"),
+        ("08:31", "China stocks surge most in two years as Beijing vows stronger support"),
         ("05:21", "Seoul repatriates six North Koreans found on a drifting fishing boat"),
         ("04:06", "22 injured after a passenger ferry collides with a dock in Hong Kong"),
         ("02:22", "Families of slain Filipinos seek justice as Duterte's ICC trial opens"),
     ]),
     ("AFRICA", [
-        ("04:06", "At least 13 Niger soldiers killed in a Sanam armed attack"),
+        ("11:51", "Suspected militants kill 13 soldiers in southwest Niger, ministry says"),
         ("01:10", "Cairo fuel-tanker inferno: the driver is held after 31 deaths"),
         ("00:48", "Kenyan man wrongly convicted in UK says Met Police ruined his life"),
-        ("01:27", "African Union and China sign a development-cooperation agreement"),
+        ("10:39", "Uganda to withdraw troops from a DR Congo town amid a diplomatic row"),
     ]),
     ("AMERICAS", [
-        ("04:34", "Thanksgiving storms leave nearly a million without power across the US"),
+        ("10:26", "Hundreds of thousands still without power after storms hit the US"),
         ("06:25", "Trump argues the US does not 'need' Middle East oil and 'protects' Israel"),
         ("00:34", "Trump claims fake GDP data before the midterms and demands a probe"),
         ("03:03", "Amazon staff to strike and rally on the busiest weekend of the year"),
         ("08:24", "Deadly floods leave parts of Ecuador under water"),
         ("05:32", "Dolly Parton's $500 pledge cut students' dropout rate from 35% to 6%"),
-        ("06:12", "Strobe Talbott, former deputy secretary of state, has died"),
+        ("10:57", "Canada's Parliament receives a petition to oust Trump's envoy"),
     ]),
     ("OCEANIA", [
         ("07:10", "A technical issue forces South Australia police to withdraw 8,000 fines"),
@@ -102,11 +107,14 @@ REGIONS = [
     ]),
 ]
 
-FOOT = "Compiled from a scan of 42 wire feeds, 263 items timestamped 00:00-09:00 UTC, 27 November 2026"
+FOOT = ("Compiled from a scan of 42 wire feeds, 301 items timestamped "
+        "00:00-12:07 UTC, 27 November 2026")
 
 TOP, BOTTOM = 326, 946
 GUTTER = 16
 CW = (RIGHT - M - 2 * GUTTER) / 3
+HEAD_SZ, HEAD_LH = 12.5, 14
+BLOCK_GAP = 6
 
 
 def font(size, bold=False, serif=False):
@@ -118,14 +126,14 @@ def tw(d, s, size, bold=False, serif=False):
 
 
 def wrap(d, text, size, maxw, bold=False, serif=False):
-    words, lines, cur = text.split(), [], ""
-    for w in words:
-        t = (cur + " " + w).strip()
-        if tw(d, t, size, bold, serif) <= maxw or not cur:
-            cur = t
+    lines, cur = [], ""
+    for word in text.split():
+        trial = (cur + " " + word).strip()
+        if not cur or tw(d, trial, size, bold, serif) <= maxw:
+            cur = trial
         else:
             lines.append(cur)
-            cur = w
+            cur = word
     if cur:
         lines.append(cur)
     return lines
@@ -135,21 +143,28 @@ def put(d, x, y, s, size, fill, bold=False, serif=False):
     d.text((x, y), s, font=font(size, bold, serif), fill=fill)
 
 
-def layout(d, head_sz=12.5, lh=14):
-    """Height of every region block and the greedy three-column fill.
+def time_gutter(d):
+    """Width of the UTC stamp plus breathing room, so time never runs into copy."""
+    return int(max(tw(d, t, 9.5, True) for _, items in REGIONS for t, _ in items)) + 5
 
-    Shared with audit.py so the geometry proof measures the very numbers the
-    renderer draws with. Raises instead of silently dropping a region.
+
+def layout(d):
+    """Region-block heights and the greedy three-column fill.
+
+    Shared with audit.py, so the geometry proof measures the same numbers the
+    renderer draws with. Raises rather than silently dropping a block.
     """
+    gutter = time_gutter(d)
     blocks = []
     for name, items in REGIONS:
         h = 18
         for _, head in items:
-            h += len(wrap(d, head, head_sz, CW - 26)[:3]) * lh + 4
+            h += len(wrap(d, head, HEAD_SZ, CW - gutter)[:3]) * HEAD_LH + 4
         blocks.append((name, items, h))
     cols, cur, curh = [], [], 0
+    limit = BOTTOM - TOP
     for blk in blocks:
-        if cur and curh + blk[2] > (BOTTOM - TOP):
+        if cur and curh + blk[2] > limit:
             cols.append((cur, curh))
             cur, curh = [], 0
         cur.append(blk)
@@ -159,8 +174,8 @@ def layout(d, head_sz=12.5, lh=14):
     if len(cols) > 3:
         raise SystemExit("layout needs %d columns, page holds 3" % len(cols))
     for _, h in cols:
-        if h > BOTTOM - TOP:
-            raise SystemExit("column overflows: %d > %d" % (h, BOTTOM - TOP))
+        if h > limit:
+            raise SystemExit("column overflows: %d > %d" % (h, limit))
     return cols
 
 
@@ -174,16 +189,16 @@ def build(out="/opt/data/makefun/news27/entry-arm8/entry.png", scale=2):
     tally = "  ·  ".join("%s %d" % (name, len(items)) for name, items in REGIONS)
     put(d, (RIGHT - tw(d, tally, 12, True)) * S, 32 * S, tally, 12 * S, SOFT, True)
     put(d, M * S, 46 * S, DATE, 46 * S, INK, bold=True, serif=True)
-    put(d, M * S, 98 * S, "%d STORIES · %d REGIONS · A WIRE SHEET OF THE DAY" % (total, len(REGIONS)),
+    put(d, M * S, 98 * S,
+        "%d STORIES · %d REGIONS · A WIRE SHEET OF THE DAY" % (total, len(REGIONS)),
         14 * S, RED, bold=True)
     d.rectangle([M * S, 118 * S, RIGHT * S, 122 * S], fill=RED)
 
-    colw = (RIGHT - M - 2 * 16) / 3
     for i, (region, head) in enumerate(LEADS):
-        x = M + i * (colw + 16)
+        x = M + i * (CW + GUTTER)
         put(d, x * S, 132 * S, region, 11 * S, BLUE, bold=True)
         ty = 147
-        for ln in wrap(d, head, 16 * S, colw * S, serif=True)[:4]:
+        for ln in wrap(d, head, 16 * S, CW * S, serif=True)[:4]:
             put(d, x * S, ty * S, ln, 16 * S, INK, serif=True)
             ty += 19
     d.rectangle([M * S, 228 * S, RIGHT * S, 229 * S], fill=RULE)
@@ -197,6 +212,7 @@ def build(out="/opt/data/makefun/news27/entry-arm8/entry.png", scale=2):
             put(d, x * S, (287 + j * 12) * S, ln, 10 * S, SOFT)
     d.rectangle([M * S, 316 * S, RIGHT * S, 317 * S], fill=RULE)
 
+    gutter = time_gutter(d)
     for ci, (col, _) in enumerate(layout(d)):
         x = M + ci * (CW + GUTTER)
         y = TOP
@@ -204,18 +220,19 @@ def build(out="/opt/data/makefun/news27/entry-arm8/entry.png", scale=2):
             put(d, x * S, y * S, name, 11 * S, RED, bold=True)
             d.rectangle([x * S, (y + 13) * S, (x + CW) * S, (y + 14) * S], fill=RULE)
             y += 18
-            for t, head in items:
-                put(d, x * S, y * S, t, 9.5 * S, FAINT, bold=True)
-                for ln in wrap(d, head, 12.5 * S, (CW - 26) * S)[:3]:
-                    put(d, (x + 26) * S, y * S, ln, 12.5 * S, INK)
-                    y += 14
+            for stamp, head in items:
+                put(d, x * S, y * S, stamp, 9.5 * S, FAINT, bold=True)
+                for ln in wrap(d, head, HEAD_SZ * S, (CW - gutter) * S)[:3]:
+                    put(d, (x + gutter) * S, y * S, ln, HEAD_SZ * S, INK)
+                    y += HEAD_LH
                 y += 4
-            y += 6
+            y += BLOCK_GAP
 
     d.rectangle([M * S, 960 * S, RIGHT * S, 961 * S], fill=RULE)
     put(d, M * S, 966 * S, FOOT, 10 * S, FAINT)
 
-    os.makedirs(os.path.dirname(out), exist_ok=True)
+    parent = os.path.dirname(os.path.abspath(out))
+    os.makedirs(parent, exist_ok=True)
     img.resize((W, H), Image.LANCZOS).save(out, optimize=True)
     print("wrote", out, os.path.getsize(out), "bytes")
 
