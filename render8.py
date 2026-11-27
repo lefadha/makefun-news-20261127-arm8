@@ -5,8 +5,12 @@ Measured from the 27 Nov board: rank 1 carries 38 stories over 7 regions, rank 2
 at 98.9-99.1%. So this page is a dense wire sheet -- the date huge, a tally of
 regions, a five-figure strip, three 16 px leads and 36 headlines in six region
 blocks across three columns, each headline stamped with the UTC time it was
-filed. Every line below is a row of this run's own scan_out.txt (230 items,
-42 feeds, 00:00-07:54 UTC, 27 Nov 2026); nothing is invented.
+filed. Every line below is a row of this run's own scan_out.txt (263 items,
+42 feeds, 00:00-09:00 UTC, 27 Nov 2026); nothing is invented.
+
+Re-authored in this run. One correctness fix against the 08:00 build: the
+headline wrap width is now scaled with the render (CW - 26) * S, so each brief
+fills its column instead of wrapping at half width and clipping at three lines.
 """
 import os
 
@@ -32,7 +36,7 @@ TAG = "THE WORLD IN ONE DAY"
 
 # The three leads: one per continent-sized block of the day.
 LEADS = [
-    ("MIDDLE EAST", "Iran calls the deadly Kuwait drone attack 'suspicious' as Syria voices solidarity"),
+    ("MIDDLE EAST", "Syria voices solidarity with Kuwait after drone attacks blamed on Iran, as several countries condemn the strike"),
     ("EUROPE", "Zelenskyy warns of a major Russian attack as Trump tells Putin to pull back"),
     ("AMERICAS", "Thanksgiving storms leave nearly a million without power across the US"),
 ]
@@ -49,28 +53,28 @@ NUMBERS = [
 # 36 headlines, six region blocks, each with the UTC time the wire filed it.
 REGIONS = [
     ("MIDDLE EAST", [
-        ("00:00", "Iran's Araghchi calls the deadly Kuwait attack 'suspicious'"),
+        ("01:07", "Syria expresses solidarity with Kuwait after drone attacks blamed on Iran"),
         ("02:25", "Trump says Iran's missiles can reach Europe, warns of 'nuclear holocaust' risk"),
         ("01:22", "Israeli airstrikes destroy five residential buildings in Gaza"),
         ("05:26", "Erdogan completes Turkey's ratification of the Mecca defence pact"),
-        ("05:27", "Israel uses south Lebanon's Christian villages to divide and conquer"),
+        ("07:35", "Iran says its air defences forced a US F-16 to withdraw near Hengam Island"),
     ]),
     ("EUROPE", [
         ("02:14", "Zelenskyy warns of a major Russian attack; Trump urges Putin to 'pull back'"),
         ("04:46", "Estonia closes its land borders with Russia to keep out spies"),
-        ("00:20", "NHS boss warns of a 'horrible spike' in flu as admissions surge"),
-        ("01:07", "AFP reports a cyberattack and shuts down its content platform"),
+        ("07:40", "NHS boss warns of a 'horrible spike' in flu as admissions surge"),
+        ("01:13", "France's AFP news agency hit by cyberattack, takes platform offline"),
         ("06:00", "Reform UK pledges to scrap hospital parking fees in England"),
-        ("01:31", "Altria and Japan Tobacco explore a takeover of Imperial Brands"),
-        ("06:41", "Merz ends the EU budget summit early over deep divisions"),
-        ("07:07", "Serbia's student movement yet to name a prime minister as deadlines loom"),
+        ("08:08", "Spain's Vox leader Abascal nears power as election kingmaker"),
+        ("09:00", "Italy's premier refuses to sign the EU budget deal, calling it 'light years away'"),
+        ("08:22", "Russian sabotage attacks in Europe up 16%, the IISS says"),
     ]),
     ("ASIA", [
         ("00:47", "Sheikh Hasina's planned return puts Bangladesh on edge and India in a bind"),
-        ("03:08", "New Zealand's ruling coalition falls one seat short of a majority"),
+        ("03:28", "New Zealand's ruling coalition falls one seat short of a majority"),
         ("04:51", "China's military tests new Taiwan landing tactics in coastal drills"),
         ("02:38", "Faster Tokyo inflation supports the case for a BOJ hike in December"),
-        ("06:30", "Japan releases new guidelines on AI use by its Self-Defense Forces"),
+        ("08:31", "China stocks surge most in two years as Beijing vows stronger market support"),
         ("05:21", "Seoul repatriates six North Koreans found on a drifting fishing boat"),
         ("04:06", "22 injured after a passenger ferry collides with a dock in Hong Kong"),
         ("02:22", "Families of slain Filipinos seek justice as Duterte's ICC trial opens"),
@@ -78,27 +82,27 @@ REGIONS = [
     ("AFRICA", [
         ("04:06", "At least 13 Niger soldiers killed in a Sanam armed attack"),
         ("01:10", "Cairo fuel-tanker inferno: the driver is held after 31 deaths"),
-        ("00:48", "UN says violence against women is rising as support services shrink"),
+        ("00:48", "Kenyan man wrongly convicted in UK says Met Police ruined his life"),
         ("01:27", "African Union and China sign a development-cooperation agreement"),
     ]),
     ("AMERICAS", [
         ("04:34", "Thanksgiving storms leave nearly a million without power across the US"),
-        ("01:44", "Trump says the US holds 'close to 50%' of the world's oil"),
+        ("06:25", "Trump argues the US does not 'need' Middle East oil and 'protects' Israel"),
         ("00:34", "Trump claims fake GDP data before the midterms and demands a probe"),
         ("03:03", "Amazon staff to strike and rally on the busiest weekend of the year"),
-        ("00:11", "Argentina bars its central bank from printing money to fund spending"),
-        ("05:32", "Dolly Parton's $500 pledge cuts a college's dropout rate from 35% to 6%"),
+        ("08:24", "Deadly floods leave parts of Ecuador under water"),
+        ("05:32", "Dolly Parton's $500 pledge cut students' dropout rate from 35% to 6%"),
         ("06:12", "Strobe Talbott, former deputy secretary of state, has died"),
     ]),
     ("OCEANIA", [
-        ("01:10", "Far-right Australian party set for historic gains in a state election"),
+        ("07:10", "A technical issue forces South Australia police to withdraw 8,000 fines"),
         ("02:41", "Australia clears a law requiring LNG exporters to keep 20% at home"),
-        ("00:43", "Cricket Australia widens its Sandpapergate probe to the 2017-18 Ashes"),
+        ("07:47", "Australia's Sandpapergate probe will also cover the 2017-18 Ashes"),
         ("06:22", "Australia sanctions two men over 2024 antisemitic firebombings"),
     ]),
 ]
 
-FOOT = "Compiled from a scan of 42 wire feeds, 230 items timestamped 00:00-07:54 UTC, 27 November 2026"
+FOOT = "Compiled from a scan of 42 wire feeds, 263 items timestamped 00:00-09:00 UTC, 27 November 2026"
 
 TOP, BOTTOM = 326, 946
 GUTTER = 16
@@ -202,7 +206,7 @@ def build(out="/opt/data/makefun/news27/entry-arm8/entry.png", scale=2):
             y += 18
             for t, head in items:
                 put(d, x * S, y * S, t, 9.5 * S, FAINT, bold=True)
-                for ln in wrap(d, head, 12.5 * S, CW - 26)[:3]:
+                for ln in wrap(d, head, 12.5 * S, (CW - 26) * S)[:3]:
                     put(d, (x + 26) * S, y * S, ln, 12.5 * S, INK)
                     y += 14
                 y += 4

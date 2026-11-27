@@ -22,9 +22,14 @@ attack, Zelenskyy's mass-strike warning, the Thanksgiving storm that left
 nearly a million US homes dark).
 
 Every line comes from the desk's own scan of 42 wire feeds taken during this
-build, keeping only items timestamped 27 November 2026 00:00–07:54 UTC (230
+build, keeping only items timestamped 27 November 2026 00:00–09:00 UTC (263
 distinct items). Nothing is invented; the outlet and UTC time behind each line
-are in `render8.py`.
+are in `render8.py`. The build replaces the 06:00 briefs whose rows had rolled
+out of the feeds (Araghchi's "suspicious" line, Altria/Imperial, Argentina's
+central bank, the UN women report, the far-right Australian state race) and
+adds the later filings: Italy refusing the EU budget deal, Russian sabotage up
+16%, China's stock surge, the Iran F-16 claim, Ecuador's floods and Spain's Vox
+as kingmaker.
 
 `main.py` copies `entry.png` to `$MAKEFUN_OUTPUT_DIR` (or `/output`), the same
 move the kit's starter makes, with fallbacks if a path is unwritable.
@@ -33,8 +38,9 @@ labels survive OCR, the three-column fill fits the footer rule and nothing
 overflows, and `qc.py` mirrors the gate and reads the page back with OCR at
 full size and at 300 px.
 
-Measured: 443,732 B, 1024x1024, zero ink in the outer 24 px, byte-identical
-over two renders (sha256 `f80a37fc…`), audit: 3 columns, 6/6 regions, no
-overflow; OCR 143 boxes at full size (median 19 px) and 64 boxes at 300 px.
+Measured in this session: 457,112 B, 1024x1024, zero ink in the outer 24 px,
+byte-identical over two renders (sha256 `19e6519b…`), audit: 3 columns, 6/6
+regions, no overflow, 29 of 36 headlines legible; OCR 110 boxes at full size
+(median 19 px, all confident) and 70 boxes at 300 px (25 confident).
 
 MIT licensed.
