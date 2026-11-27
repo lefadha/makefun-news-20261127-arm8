@@ -221,4 +221,7 @@ def build(out="/opt/data/makefun/news27/entry-arm8/entry.png", scale=2):
 
 
 if __name__ == "__main__":
-    build()
+    import sys
+
+    build(sys.argv[1] if len(sys.argv) > 1 else
+          "/opt/data/makefun/news27/entry-arm8/entry.png")
