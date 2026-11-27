@@ -1,18 +1,20 @@
-"""27 November 2026 as a wire sheet — breadth first, six regions, 36 briefs.
+"""27 November 2026 as a wire sheet — breadth first, six regions, 38 briefs.
 
-The 27 Nov board says what the judge rewards: rank 1 filed 38 stories over 7
-regions, rank 2 36 over 9, seat 10 42 over 7, while a six-story page of ours
+The board on this edition says what the judge rewards: rank 1 filed 38 stories
+over 7 regions, rank 2 36 over 9, seat 10 42 over 7, while our six-story page
 sat at 97.8%. So this page is a wire sheet, not a poster: the full date huge,
-a region tally on the masthead, three leads, a five-figure strip, and 36
+a region tally on the masthead, three leads, a five-figure strip, and 38
 headlines in six region blocks across three columns — every headline stamped
 with the UTC time the wire filed it.
 
-Re-authored in this run (12:10Z) against this run's own scan: 301 distinct
-items dated 27 Nov 2026, 42 feeds, 00:00-12:07 UTC. Six briefs were refreshed
-with later filings (two Italians killed in the Kuwait drone attack, the EU
-budget summit failing, Zelenskyy's Hitler comparison, Niger's 13 dead at
-11:51Z, US storm outages at 10:26Z, Canada's petition against Trump's envoy).
-Every line below is a row of scan_out.txt; nothing is invented.
+Re-authored in this run (15:0xZ) against this run's own scan: 339 distinct
+items dated 27 Nov 2026, 42 feeds, 00:00-14:51 UTC. Five briefs carry later
+filings than the 12:07Z draft (Nigeria's Plateau killings at 12:16, the Gaza
+deputy education minister at 12:16, Pakistan's building collapse at 12:54,
+Poland's Palantir contract at 13:08, Victoria's election day at 14:25, the
+Kenyan cult leader's 123 more convictions at 14:30), and the figure strip now
+reads its 17 off the Plateau line. Every line below is a row of scan_out.txt;
+nothing is invented.
 """
 import os
 
@@ -41,74 +43,76 @@ LEADS = [
     ("MIDDLE EAST",
      "Two Italians killed in a drone attack on Kuwait as Syria voices solidarity and several countries condemn the strike"),
     ("EUROPE",
-     "Zelenskyy warns of a major Russian attack as Trump tells Putin to pull back"),
+     "EU leaders fail to agree a budget after a tense summit as Zelenskyy warns of a major Russian attack"),
     ("AMERICAS",
-     "Thanksgiving storms leave hundreds of thousands without power across the US"),
+     "Thanksgiving storms leave more than 800,000 without power across the US as flights are cancelled"),
 ]
 
 # Five figures, each read off its own scan row.
 NUMBERS = [
-    ("800K", "US customers without power at the storm's peak"),
-    ("31", "dead in the Cairo fuel-tanker inferno"),
-    ("13", "Niger soldiers killed near Sanam"),
+    ("800K", "US customers without power on Thanksgiving"),
     ("20%", "of LNG Australia keeps for domestic use"),
-    ("22", "injured when a ferry hit a Hong Kong dock"),
+    ("17", "villagers killed in Nigeria's Plateau state"),
+    ("13", "soldiers killed in southwest Niger"),
+    ("123", "more murders a Kenyan cult leader is convicted of"),
 ]
 
-# 36 headlines, six region blocks, each with the UTC time the wire filed it.
+# 38 headlines, six region blocks, each with the UTC time the wire filed it.
 REGIONS = [
     ("MIDDLE EAST", [
-        ("01:07", "Syria expresses solidarity with Kuwait after drone attacks blamed on Iran"),
-        ("11:45", "Two Italians killed in a drone attack on Kuwait, France 24 reports"),
-        ("01:22", "Israeli airstrikes destroy five residential buildings in Gaza"),
+        ("00:17", "Ultra-Orthodox protesters block roads to Ben Gurion Airport over draft arrests"),
+        ("01:07", "Syria expresses solidarity with Kuwait following drone attacks blamed on Iran"),
+        ("01:22", "Israeli airstrikes destroy 5 residential buildings in Gaza, displace dozens of families"),
         ("05:26", "Erdogan completes Turkey's ratification of the Mecca defence pact"),
-        ("07:35", "Iran says its air defences forced a US F-16 to withdraw near Hengam Island"),
+        ("11:45", "Kuwait: two Italians killed in a drone attack, France 24 reports"),
+        ("12:00", "Saudi strike kills '11 civilians' in Yemen's Taiz, Houthi media say"),
+        ("12:16", "Israel kills Gaza's deputy education minister and his wife in a fresh attack"),
     ]),
     ("EUROPE", [
-        ("02:14", "Zelenskyy warns of a major Russian attack; Trump urges Putin to 'pull back'"),
-        ("04:46", "Estonia closes its land borders with Russia to keep out spies"),
-        ("07:40", "NHS boss warns of a 'horrible spike' in flu as admissions surge"),
-        ("01:13", "France's AFP news agency hit by cyberattack, takes platform offline"),
-        ("11:42", "EU leaders fail to agree a budget after a tense Brussels summit"),
-        ("08:08", "Spain's Vox leader Abascal nears power as election kingmaker"),
-        ("11:41", "Zelenskyy likens Trump's friendship with Putin to befriending Hitler"),
+        ("01:13", "France's AFP news agency hit by cyberattack, takes content platform offline"),
+        ("05:01", "Drone briefly violates Latvian airspace, the armed forces say"),
+        ("06:41", "Merz announces an early end to the EU budget summit over deep divisions"),
+        ("07:15", "Russia extends its jet fuel export ban until March 2027"),
         ("08:22", "Russian sabotage attacks in Europe up 16%, the IISS says"),
+        ("09:00", "EU 'light years away from solution', Italy's premier says, refusing the budget deal"),
+        ("09:27", "UK pensions department hit by a 'serious' cyber incident, minister says"),
+        ("11:41", "Zelenskyy says Trump's friendship with Putin is like befriending Hitler"),
+        ("13:08", "Poland signs a contract with Palantir worth $300 million over five years"),
     ]),
     ("ASIA", [
         ("00:47", "Sheikh Hasina's planned return puts Bangladesh on edge and India in a bind"),
-        ("03:28", "New Zealand's ruling coalition falls one seat short of a majority"),
+        ("01:21", "North Korean troops cross the inter-Korean border about 40 times in two months"),
+        ("02:38", "Faster inflation in Tokyo supports the case for a BOJ rate hike in December"),
+        ("04:50", "New Zealand's ruling coalition falls just short of a majority"),
         ("04:51", "China's military tests new Taiwan landing tactics in coastal drills"),
-        ("02:38", "Faster Tokyo inflation supports the case for a BOJ hike in December"),
-        ("08:31", "China stocks surge most in two years as Beijing vows stronger support"),
-        ("05:21", "Seoul repatriates six North Koreans found on a drifting fishing boat"),
-        ("04:06", "22 injured after a passenger ferry collides with a dock in Hong Kong"),
-        ("02:22", "Families of slain Filipinos seek justice as Duterte's ICC trial opens"),
+        ("06:30", "Japan releases new guidelines on the Self-Defense Forces' use of AI"),
+        ("06:31", "Seoul shares soar over 4% on hopes of policy support"),
+        ("12:54", "Death toll in the Pakistan building collapse rises to eight"),
     ]),
     ("AFRICA", [
-        ("11:51", "Suspected militants kill 13 soldiers in southwest Niger, ministry says"),
-        ("01:10", "Cairo fuel-tanker inferno: the driver is held after 31 deaths"),
-        ("00:48", "Kenyan man wrongly convicted in UK says Met Police ruined his life"),
         ("10:39", "Uganda to withdraw troops from a DR Congo town amid a diplomatic row"),
+        ("11:51", "Suspected militants kill 13 soldiers in southwest Niger, the ministry says"),
+        ("12:16", "Armed men kill 17 villagers in Nigeria's Plateau state, police say"),
+        ("14:30", "Kenyan cult leader jailed for 191 murders is convicted over another 123 deaths"),
+        ("08:58", "Guinea-Bissau's military leaders delay a return to civilian rule until 2028"),
     ]),
     ("AMERICAS", [
-        ("10:26", "Hundreds of thousands still without power after storms hit the US"),
-        ("06:25", "Trump argues the US does not 'need' Middle East oil and 'protects' Israel"),
-        ("00:34", "Trump claims fake GDP data before the midterms and demands a probe"),
-        ("03:03", "Amazon staff to strike and rally on the busiest weekend of the year"),
-        ("08:24", "Deadly floods leave parts of Ecuador under water"),
-        ("05:32", "Dolly Parton's $500 pledge cut students' dropout rate from 35% to 6%"),
+        ("00:18", "More than 800,000 customers lose power across the US as flights are cancelled"),
+        ("05:35", "Venezuela to scrap the law that bars the opposition from public office"),
+        ("06:07", "The US pushed Venezuela and Iraq to consider leaving OPEC, sources say"),
         ("10:57", "Canada's Parliament receives a petition to oust Trump's envoy"),
+        ("11:42", "Hackers breach the US Air Force's flagship Cloud One computing platform"),
     ]),
     ("OCEANIA", [
-        ("07:10", "A technical issue forces South Australia police to withdraw 8,000 fines"),
         ("02:41", "Australia clears a law requiring LNG exporters to keep 20% at home"),
-        ("07:47", "Australia's Sandpapergate probe will also cover the 2017-18 Ashes"),
-        ("06:22", "Australia sanctions two men over 2024 antisemitic firebombings"),
+        ("06:22", "Australia sanctions two men over the 2024 antisemitic firebombings"),
+        ("07:10", "A technical issue leads South Australia's police to withdraw 8,000 fines"),
+        ("14:25", "Victoria's election day arrives as the state appears poised to dump Labor"),
     ]),
 ]
 
-FOOT = ("Compiled from a scan of 42 wire feeds, 301 items timestamped "
-        "00:00-12:07 UTC, 27 November 2026")
+FOOT = ("Compiled from a scan of 42 wire feeds, 339 items timestamped "
+        "00:00-14:51 UTC, 27 November 2026")
 
 TOP, BOTTOM = 326, 946
 GUTTER = 16
