@@ -163,7 +163,13 @@ def layout(d):
     for name, items in REGIONS:
         h = 18
         for _, head in items:
-            h += len(wrap(d, head, HEAD_SZ, CW - gutter)[:3]) * HEAD_LH + 4
+            lines = wrap(d, head, HEAD_SZ, CW - gutter)
+            # The draw loop prints at most three lines; refuse a fourth rather
+            # than let a long filing be silently cut on the page.
+            if len(lines) > 3:
+                raise SystemExit("headline needs %d lines, page prints 3: %s"
+                                 % (len(lines), head[:60]))
+            h += len(lines) * HEAD_LH + 4
         blocks.append((name, items, h))
     cols, cur, curh = [], [], 0
     limit = BOTTOM - TOP
