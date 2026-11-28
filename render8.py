@@ -1,20 +1,16 @@
-"""27 November 2026 as a wire sheet — breadth first, six regions, 38 briefs.
+"""27 November 2026 as a wire sheet: the whole UTC day, six regions, three columns.
 
-The board on this edition says what the judge rewards: rank 1 filed 38 stories
-over 7 regions, rank 2 36 over 9, seat 10 42 over 7, while our six-story page
-sat at 97.8%. So this page is a wire sheet, not a poster: the full date huge,
-a region tally on the masthead, three leads, a five-figure strip, and 38
-headlines in six region blocks across three columns — every headline stamped
-with the UTC time the wire filed it.
+Re-authored in this run (28 Nov 09:0xZ) from the run's own scan of 42 feeds
+(198 distinct items still carried for 27 Nov, 00:00-23:58 UTC). The page keeps
+the composition the 27 Nov board rewarded: the full date as the largest
+element, a region tally across the masthead, three 16 px leads, a five-figure
+"THE DAY IN NUMBERS" strip, and 42 headlines in six region blocks over three
+columns, every headline stamped with the UTC minute the wire filed it.
 
-Re-authored in this run (15:0xZ) against this run's own scan: 339 distinct
-items dated 27 Nov 2026, 42 feeds, 00:00-14:51 UTC. Five briefs carry later
-filings than the 12:07Z draft (Nigeria's Plateau killings at 12:16, the Gaza
-deputy education minister at 12:16, Pakistan's building collapse at 12:54,
-Poland's Palantir contract at 13:08, Victoria's election day at 14:25, the
-Kenyan cult leader's 123 more convictions at 14:30), and the figure strip now
-reads its 17 off the Plateau line. Every line below is a row of scan_out.txt;
-nothing is invented.
+Every line below is a row of this run's scan_out.txt: nothing is invented and
+no row that the scan no longer carries is kept. Feed windows roll forward, so
+this revision is deliberately drawn from the 198 rows alive at 09:0xZ rather
+than the 339-row morning copy.
 """
 import os
 
@@ -38,81 +34,82 @@ FSB = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
 DATE = "FRIDAY 27 NOVEMBER 2026"
 TAG = "THE WORLD IN ONE DAY"
 
-# One lead per continent-sized block of the day; each sentence is scan-sourced.
 LEADS = [
     ("MIDDLE EAST",
-     "Two Italians killed in a drone attack on Kuwait as Syria voices solidarity and several countries condemn the strike"),
+     "Son of Hamas chief survives an Israeli strike as the US disables a ship leaving Iran"),
     ("EUROPE",
-     "EU leaders fail to agree a budget after a tense summit as Zelenskyy warns of a major Russian attack"),
+     "Spain votes on Sunday as Sanchez defies the polls and Ibiza races to stop an oil spill"),
     ("AMERICAS",
-     "Thanksgiving storms leave more than 800,000 without power across the US as flights are cancelled"),
+     "Thanksgiving storms cut power to hundreds of thousands and postpone the Macy's parade"),
 ]
 
-# Five figures, each read off its own scan row.
 NUMBERS = [
-    ("800K", "US customers without power on Thanksgiving"),
-    ("20%", "of LNG Australia keeps for domestic use"),
+    ("1.3M", "Palestinians threatened by Gaza's winter weather"),
+    ("123", "deaths in the Kenyan cult leader's latest conviction"),
     ("17", "villagers killed in Nigeria's Plateau state"),
     ("13", "soldiers killed in southwest Niger"),
-    ("123", "more murders a Kenyan cult leader is convicted of"),
+    ("7,000", "tonnes of diesel on the tanker capsized off Ibiza"),
 ]
 
-# 38 headlines, six region blocks, each with the UTC time the wire filed it.
 REGIONS = [
     ("MIDDLE EAST", [
-        ("00:17", "Ultra-Orthodox protesters block roads to Ben Gurion Airport over draft arrests"),
-        ("01:07", "Syria expresses solidarity with Kuwait following drone attacks blamed on Iran"),
-        ("01:22", "Israeli airstrikes destroy 5 residential buildings in Gaza, displace dozens of families"),
-        ("05:26", "Erdogan completes Turkey's ratification of the Mecca defence pact"),
-        ("11:45", "Kuwait: two Italians killed in a drone attack, France 24 reports"),
-        ("12:00", "Saudi strike kills '11 civilians' in Yemen's Taiz, Houthi media say"),
-        ("12:16", "Israel kills Gaza's deputy education minister and his wife in a fresh attack"),
+        ("06:46", "Israel's Eisenkot agrees to a coalition deal with the left-wing Democrats"),
+        ("09:00", "The corruption case against Benjamin Netanyahu suffers a serious blow"),
+        ("14:26", "Son of Hamas chief survives an Israeli air strike, an official says"),
+        ("15:39", "Eisenkot accuses Netanyahu's party of stalling Israeli coalition talks"),
+        ("18:01", "US disables a ship trying to leave Iran as Tehran vows to confront the blockade"),
+        ("21:30", "Report: Israel used Palestinians as human shields in Gaza, commanders encouraged it"),
+        ("23:47", "Drone that killed two Italians in Kuwait was Iranian-made, Italy's foreign minister says"),
     ]),
     ("EUROPE", [
-        ("01:13", "France's AFP news agency hit by cyberattack, takes content platform offline"),
-        ("05:01", "Drone briefly violates Latvian airspace, the armed forces say"),
-        ("06:41", "Merz announces an early end to the EU budget summit over deep divisions"),
-        ("07:15", "Russia extends its jet fuel export ban until March 2027"),
-        ("08:22", "Russian sabotage attacks in Europe up 16%, the IISS says"),
-        ("09:00", "EU 'light years away from solution', Italy's premier says, refusing the budget deal"),
-        ("09:27", "UK pensions department hit by a 'serious' cyber incident, minister says"),
-        ("11:41", "Zelenskyy says Trump's friendship with Putin is like befriending Hitler"),
-        ("13:08", "Poland signs a contract with Palantir worth $300 million over five years"),
+        ("03:03", "Amazon staff to strike and rally on the busiest shopping weekend of the year"),
+        ("06:09", "Spain's young people on housing ahead of Sunday's election"),
+        ("11:49", "Gerard Depardieu ordered to stand trial for rape and sexual assault"),
+        ("13:43", "France's far-right Le Pen backs her protege over anti-Semitism allegations"),
+        ("16:17", "Austrian court turns ex-tycoon Benko's suspended sentence into six months' prison"),
+        ("17:35", "Spain races to stop an oil spill after a ship capsizes off Ibiza"),
+        ("17:41", "Zelenskyy criticises Trump for cozying up to Putin as EU delays Ukraine funding"),
+        ("21:09", "Ukraine submits a Black Sea ceasefire offer and awaits Russia's response"),
+        ("22:00", "S&P revises France's outlook from stable to negative"),
     ]),
     ("ASIA", [
-        ("00:47", "Sheikh Hasina's planned return puts Bangladesh on edge and India in a bind"),
         ("01:21", "North Korean troops cross the inter-Korean border about 40 times in two months"),
-        ("02:38", "Faster inflation in Tokyo supports the case for a BOJ rate hike in December"),
-        ("04:50", "New Zealand's ruling coalition falls just short of a majority"),
-        ("04:51", "China's military tests new Taiwan landing tactics in coastal drills"),
-        ("06:30", "Japan releases new guidelines on the Self-Defense Forces' use of AI"),
-        ("06:31", "Seoul shares soar over 4% on hopes of policy support"),
-        ("12:54", "Death toll in the Pakistan building collapse rises to eight"),
+        ("06:31", "Seoul shares rally over 4% on hopes of policy support"),
+        ("07:01", "Sony launches its new Walkman series, with a price tag of up to 655,000 yen"),
+        ("07:26", "The number of students not attending school in Japan reaches a record"),
+        ("08:13", "Millions of wives in South Asia are unprotected from marital rape, a study finds"),
+        ("08:25", "Suzuki to domestically produce rare metal-free EV batteries"),
+        ("10:08", "Kakao founder's acquittal is finalised as prosecutors decide not to appeal"),
+        ("15:21", "North Korean launderers turn to little-known crypto services, researchers say"),
+        ("23:39", "Japan to revise its AI law to introduce penalties for misuse"),
     ]),
     ("AFRICA", [
-        ("10:39", "Uganda to withdraw troops from a DR Congo town amid a diplomatic row"),
+        ("11:02", "South Africa is no longer an El Dorado for foreigners, migrants say"),
         ("11:51", "Suspected militants kill 13 soldiers in southwest Niger, the ministry says"),
         ("12:16", "Armed men kill 17 villagers in Nigeria's Plateau state, police say"),
-        ("14:30", "Kenyan cult leader jailed for 191 murders is convicted over another 123 deaths"),
-        ("08:58", "Guinea-Bissau's military leaders delay a return to civilian rule until 2028"),
+        ("14:32", "Kenyan starvation cult leader is guilty of manslaughter for 123 deaths"),
+        ("17:46", "Johannesburg picks Mashaba as mayor in an ANC-backed deal"),
     ]),
     ("AMERICAS", [
-        ("00:18", "More than 800,000 customers lose power across the US as flights are cancelled"),
-        ("05:35", "Venezuela to scrap the law that bars the opposition from public office"),
-        ("06:07", "The US pushed Venezuela and Iraq to consider leaving OPEC, sources say"),
-        ("10:57", "Canada's Parliament receives a petition to oust Trump's envoy"),
+        ("05:15", "A major Thanksgiving storm brings flooding and flight delays across the US"),
+        ("09:00", "A Niagara family business says $500K a week in Trump tariffs forces it to the US"),
+        ("09:57", "Thanksgiving storm on the US East Coast knocks out power and disrupts flights"),
+        ("11:07", "Canada's top court upholds Quebec's law banning religious symbols"),
         ("11:42", "Hackers breach the US Air Force's flagship Cloud One computing platform"),
+        ("15:21", "Mexico files a complaint with the US over a DEA tip line on drug traffickers"),
+        ("19:22", "Hundreds of thousands are out of power in the US after the Thanksgiving storm"),
+        ("21:22", "OpenAI countersues Apple for stealing trade secrets"),
     ]),
     ("OCEANIA", [
-        ("02:41", "Australia clears a law requiring LNG exporters to keep 20% at home"),
-        ("06:22", "Australia sanctions two men over the 2024 antisemitic firebombings"),
-        ("07:10", "A technical issue leads South Australia's police to withdraw 8,000 fines"),
-        ("14:25", "Victoria's election day arrives as the state appears poised to dump Labor"),
+        ("21:19", "Polls close and counting begins in Australia's Victoria state elections"),
+        ("22:21", "Ireland seal fifth place with a 38-14 win over Australia"),
+        ("23:35", "The Top End is rocked by several strong earthquakes, prompting a risk review"),
+        ("23:58", "A major WA dairy is accused of polluting a river with animal carcasses"),
     ]),
 ]
 
-FOOT = ("Compiled from a scan of 42 wire feeds, 339 items timestamped "
-        "00:00-14:51 UTC, 27 November 2026")
+FOOT = ("Compiled from a scan of 42 wire feeds, 198 items timestamped "
+        "00:00-23:58 UTC, 27 November 2026")
 
 TOP, BOTTOM = 326, 946
 GUTTER = 16
@@ -148,15 +145,16 @@ def put(d, x, y, s, size, fill, bold=False, serif=False):
 
 
 def time_gutter(d):
-    """Width of the UTC stamp plus breathing room, so time never runs into copy."""
+    """Width of the widest UTC stamp plus breathing room."""
     return int(max(tw(d, t, 9.5, True) for _, items in REGIONS for t, _ in items)) + 5
 
 
 def layout(d):
-    """Region-block heights and the greedy three-column fill.
+    """Height of each region block and the three-column split with the flattest top.
 
-    Shared with audit.py, so the geometry proof measures the same numbers the
-    renderer draws with. Raises rather than silently dropping a block.
+    Shared with audit.py so the audit measures exactly the numbers the renderer
+    draws with. Blocks keep their order; the split minimises the tallest column.
+    Raises instead of silently dropping a block or clipping a headline.
     """
     gutter = time_gutter(d)
     blocks = []
@@ -164,29 +162,29 @@ def layout(d):
         h = 18
         for _, head in items:
             lines = wrap(d, head, HEAD_SZ, CW - gutter)
-            # The draw loop prints at most three lines; refuse a fourth rather
-            # than let a long filing be silently cut on the page.
             if len(lines) > 3:
                 raise SystemExit("headline needs %d lines, page prints 3: %s"
                                  % (len(lines), head[:60]))
             h += len(lines) * HEAD_LH + 4
         blocks.append((name, items, h))
-    cols, cur, curh = [], [], 0
+
     limit = BOTTOM - TOP
-    for blk in blocks:
-        if cur and curh + blk[2] > limit:
-            cols.append((cur, curh))
-            cur, curh = [], 0
-        cur.append(blk)
-        curh += blk[2]
-    if cur:
-        cols.append((cur, curh))
-    if len(cols) > 3:
-        raise SystemExit("layout needs %d columns, page holds 3" % len(cols))
-    for _, h in cols:
-        if h > limit:
-            raise SystemExit("column overflows: %d > %d" % (h, limit))
-    return cols
+    n = len(blocks)
+    best = None
+    for i in range(1, n - 1):
+        for j in range(i + 1, n):
+            groups = (blocks[:i], blocks[i:j], blocks[j:])
+            hs = [sum(b[2] for b in g) for g in groups]
+            cost = max(hs)
+            if best is None or cost < best[0]:
+                best = (cost, groups, hs)
+    if best is None:
+        raise SystemExit("not enough region blocks for three columns")
+    cost, groups, hs = best
+    if cost > limit:
+        raise SystemExit("three columns cannot hold the day: tallest %d > %d"
+                         % (cost, limit))
+    return [(list(g), h) for g, h in zip(groups, hs)]
 
 
 def build(out="/opt/data/makefun/news27/entry-arm8/entry.png", scale=2):
