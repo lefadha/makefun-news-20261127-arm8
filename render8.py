@@ -195,7 +195,13 @@ def build(out="/opt/data/makefun/news27/entry-arm8/entry.png", scale=2):
     total = sum(len(items) for _, items in REGIONS)
     put(d, M * S, 30 * S, TAG, 15 * S, SOFT, bold=True)
     tally = "  ·  ".join("%s %d" % (name, len(items)) for name, items in REGIONS)
-    put(d, (RIGHT - tw(d, tally, 12, True)) * S, 32 * S, tally, 12 * S, SOFT, True)
+    # Shrink the tally rather than let it run under the trim: a later day may
+    # carry longer labels or bigger counts and the masthead must still hold it.
+    size = 12
+    while size > 9 and tw(d, tally, size, True) > RIGHT - M - tw(d, TAG, 15, True) - 24:
+        size -= 0.5
+    put(d, (RIGHT - tw(d, tally, size, True)) * S, (32 + (12 - size) * 0.5) * S,
+        tally, size * S, SOFT, True)
     put(d, M * S, 46 * S, DATE, 46 * S, INK, bold=True, serif=True)
     put(d, M * S, 98 * S,
         "%d STORIES · %d REGIONS · A WIRE SHEET OF THE DAY" % (total, len(REGIONS)),
